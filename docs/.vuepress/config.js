@@ -39,8 +39,8 @@ const sidebar = {
     {
       title: 'Android杂谈',
       children: [
-        'Android/virtualenv-win',
-        'Android/pycharm2018'
+        'Android/android_fastlane',
+        'Android/'
       ]
     },
     {
