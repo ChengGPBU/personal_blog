@@ -13,6 +13,12 @@ const sidebar = {
         'ES6/es6_equal'
       ]
     },
+    {
+      title: 'JavaScript',
+      children: [
+        'JavaScript/'
+      ]
+    },
 
     {
       title: 'Vue',
@@ -29,36 +35,79 @@ const sidebar = {
     }
   ],
 
-  '/Python/': [
+  '/Mobile/': [
     {
-      title: 'Python杂谈',
+      title: 'Android杂谈',
       children: [
-        'Python/virtualenv-win',
-        'Python/pycharm2018'
+        'Android/virtualenv-win',
+        'Android/pycharm2018'
       ]
     },
     {
-      title: 'Django',
+      title: 'ReactNative杂谈',
       children: [
-        'Django/urls',
-        'Django/templates_1',
-        'Django/templates_2',
-        'Django/templates_3',
-        'Django/templates_4',
-        'Django/templates_5',
-        'Django/database_1',
-        'Django/database_2',
-        'Django/database_3',
+        'ReactNative/',
+      ]
+    },
+    {
+      title: 'IOS杂谈',
+      children: [
+        'IOS/urls',
+        'IOS/templates_1',
+        'IOS/templates_2',
+        'IOS/templates_3',
+        'IOS/templates_4',
+        'IOS/templates_5',
+        'IOS/database_1',
+        'IOS/database_2',
+        'IOS/database_3',
       ]
     }
   ],
 
-  '/Database/': [
+  '/BackEnd/': [
+    {
+      title: 'Java',
+      children: [
+        'Java/'
+      ]
+    },
     {
       title: 'MySQL',
       children: [
         'MySQL/mysql5.7_install'
       ]
+    },
+    {
+      title: 'Redis',
+      children: [
+        'Redis/'
+      ]
+    },
+    {
+      title: 'Nginx',
+      children: [
+        'Nginx/'
+      ]
+    },
+    {
+      title: 'Http',
+      children: [
+        'Http/'
+      ]
+    },
+    {
+      title: 'OS',
+      children: [
+        'OS/'
+      ]
+    }
+  ],
+
+  '/other/': [
+    {
+      title: "git",
+      children: ["Git/git"]
     }
   ]
 }
@@ -69,23 +118,38 @@ const nav = [
     items: [
       { text: 'NodeJS', link: '/WEB/' + sidebar['/WEB/'][0]['children'][0] },
       { text: 'ES6', link: '/WEB/' + sidebar['/WEB/'][1]['children'][0] },
-      { text: 'Vue', link: '/WEB/' + sidebar['/WEB/'][2]['children'][0] },
-      { text: 'React', link: '/WEB/' + sidebar['/WEB/'][3]['children'][0] }
+      { text: 'JavaScript', link: '/WEB/' + sidebar['/WEB/'][2]['children'][0] },
+      { text: 'Vue', link: '/WEB/' + sidebar['/WEB/'][3]['children'][0] },
+      { text: 'React', link: '/WEB/' + sidebar['/WEB/'][4]['children'][0] }
     ]
   },
   {
-    text: 'Python',
+    text: '移动端',
     items: [
-      { text: 'Python杂谈', link: '/Python/' + sidebar['/Python/'][0]['children'][0] },
-      { text: 'Django', link: '/Python/' + sidebar['/Python/'][1]['children'][0] }
+      { text: 'Android', link: '/Mobile/' + sidebar['/Mobile/'][0]['children'][0] },
+      { text: 'ReactNative', link: '/Mobile/' + sidebar['/Mobile/'][1]['children'][0] },
+      { text: 'IOS', link: '/Mobile/' + sidebar['/Mobile/'][2]['children'][0] },
     ]
   },
   {
-    text: '数据库',
+    text: '后端栈',
     items: [
-      { text: 'MySQL', link: '/Database/' + sidebar['/Database/'][0]['children'][0] }
+      { text: 'Java基础', link: '/BackEnd/' + sidebar['/BackEnd/'][0]['children'][0] },
+      { text: 'MySQL', link: '/BackEnd/' + sidebar['/BackEnd/'][1]['children'][0] },
+      { text: 'Redis', link: '/BackEnd/' + sidebar['/BackEnd/'][2]['children'][0] },
+      { text: 'Nginx', link: '/BackEnd/' + sidebar['/BackEnd/'][3]['children'][0] },
+      { text: 'Http', link: '/BackEnd/' + sidebar['/BackEnd/'][4]['children'][0] },
+      { text: '操作系统', link: '/BackEnd/' + sidebar['/BackEnd/'][5]['children'][0] }
     ]
-  }
+  },
+
+
+  {
+    text: '其他',
+    items: [
+      { text: 'Git', link: '/other/' + sidebar['/other/'][0]['children'][0] },
+    ]
+  },
 ]
 
 var config = {
