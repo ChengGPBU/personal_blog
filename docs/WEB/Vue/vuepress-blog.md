@@ -13,36 +13,9 @@ meta:
 
 * **本文仅介绍，搭建静态博客的过程，具体教程及文档请点击进入 [vuepress中文网](https://www.vuepress.cn/ "vuepress")**  
 
-* [点击进入博客](https://zhb333.github.io/readme-blog/ "张焕标的博客") 
-
-* [点击查看项目代码](https://github.com/zhb333/readme-blog "zhb333/readme-blog")
+* [点击进入博客](https://chenggpbu.github.io/) 
 
 ## vuepress初始化
-
-### 下面初始化
-
-```sh
-# 将 github 新创建的仓库克隆到本地
-git clone git@github.com:zhb333/readme-blog.git
-
-# 进入项目
-cd readme-blog
-
-# npm 初始化, 按照提示回车
-npm init
-
-# 安装 vuepress
-npm i vuepress -D
-
-# 安装 gh-pages
-npm i gh-pages -D
-
-# 创建一个 docs 目录
-mkdir docs
-
-# 创建一个 markdown 文件
-echo '# Hello VuePress' > docs/README.md
-```
 
 ### npm 脚本
 
@@ -87,10 +60,10 @@ npm run build
 var config = {
 
   // 静态网站部署的目录
-  base: '/readme-blog/',
+  base: '/',
 
   // 网站标题
-  title: '标 の 博客',
+  title: '程广的博客',
 
   // <meta name="description" content="...">
   description: '种一棵树最好的时间是十年前，其次是现在', 
@@ -123,7 +96,7 @@ module.exports = config
 ---
 home: true
 heroImage: /zlx.jpg
-footer: MIT Licensed | Copyright © 2018 ZhangHuanbiao
+footer: MIT Licensed | Copyright © 2018 程广
 ---
 ```
 
@@ -250,7 +223,7 @@ var config = {
 
 ### 侧边栏效果
 
-访问： **http://localhost:8080/readme-blog/WEB/Vue/vuepress-blog.html**， 可以看到侧边栏已经生成
+访问： **http://localhost:8080/WEB/Vue/vuepress-blog.html**， 可以看到侧边栏已经生成
 
 
 ## 将静态博客网站部署到外网
@@ -261,10 +234,10 @@ var config = {
 npm run deploy
 ```
 
-过几分钟后，访问 **https://zhb333.github.io/readme-blog/**， 便可以看到在外网成功部署的静态博客
+过几分钟后，访问 **https://chenggpbu.github.io/**， 便可以看到在外网成功部署的静态博客
 
 
-## 评论功能
+## 评论功能（暂无配置）
 
 我们使用 **valine** 来实现评论功能：
 
