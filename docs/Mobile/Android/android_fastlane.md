@@ -11,6 +11,8 @@ meta:
 # Android fastlane自动化构建打包
 
 > Fastlane is the easiest way to automate beta deployments and releases for your iOS and Android apps.
+ * **fastlane 具体教程及文档请点击进入 [fastlane 使用文档](https://docs.fastlane.tools/)**  
+
 
 
 ## 项目目录结构
@@ -150,7 +152,7 @@ end
 ``` js
   fastlane package flavor:${flavors_array[packageEnv-1]} build_type:${buildType_array[buildTypeNumber-1]} log_path:"${logPath}/changelog.txt"
 ``` 
-> - 2.fastlane 根据传入的参数 调用gradle插件 执行打包任务
+> - 2.fastlane 根据传入的参数 调用gradle插件 执行打包任务 ***需要提前安装gradle插件<br/>[fastlane插件安装流程](https://docs.fastlane.tools/plugins/using-plugins/) <br/>[gradle插件文档](https://docs.fastlane.tools/actions/gradle/#gradle)***
 > - 3.打包完成调用执行下边的脚本 上传到fir.im。测试自行下载测试
 ``` js
  # 上传到 firim

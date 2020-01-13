@@ -37,15 +37,16 @@ const sidebar = {
 
   '/Mobile/': [
     {
-      title: 'Android杂谈',
+      title: 'Android',
       children: [
         'Android/android_fastlane',
         'Android/'
       ]
     },
     {
-      title: 'ReactNative杂谈',
+      title: 'ReactNative',
       children: [
+        'ReactNative/rn_fastlane',
         'ReactNative/',
       ]
     },
@@ -108,6 +109,10 @@ const sidebar = {
     {
       title: "git",
       children: ["Git/git"]
+    },
+    {
+      title: "个人",
+      children: ["private/2019_summary"]
     }
   ]
 }
@@ -148,6 +153,7 @@ const nav = [
     text: '其他',
     items: [
       { text: 'Git', link: '/other/' + sidebar['/other/'][0]['children'][0] },
+      { text: '个人', link: '/other/' + sidebar['/other/'][1]['children'][0] },
     ]
   },
 ]
