@@ -72,8 +72,7 @@ meta:
 
 ### fastlane在Android和RN中的使用
 [fastlane在Android原生中的使用](https://chenggpbu.github.io/Mobile/Android/android_fastlane.html) <br/>
-[fastlane在RN工程中的使用](https://chenggpbu.github.io/Mobile/Android/android_fastlane.html)
-
+[fastlane在RN工程中的使用](https://chenggpbu.github.io/Mobile/ReactNative/rn_fastlane.html)
 
 ## 自身不足
 * 1、知识面太窄。
