@@ -10,13 +10,14 @@ const sidebar = {
       title: 'ES6',
       children: [
         'ES6/array',
+        'ES6/array_buffer',
         'ES6/es6_equal'
       ]
     },
     {
       title: 'JavaScript',
       children: [
-        'JavaScript/'
+        'JavaScript/js_this'
       ]
     },
 
@@ -40,6 +41,7 @@ const sidebar = {
       title: 'Android',
       children: [
         'Android/android_fastlane',
+        'Android/android_event',
         'Android/'
       ]
     },
@@ -71,6 +73,13 @@ const sidebar = {
       title: 'Java',
       children: [
         'Java/'
+      ]
+    },
+    {
+      title: 'Spring',
+      children: [
+        'Spring/',
+        'Spring/lombok'
       ]
     },
     {
@@ -140,11 +149,12 @@ const nav = [
     text: '后端栈',
     items: [
       { text: 'Java基础', link: '/BackEnd/' + sidebar['/BackEnd/'][0]['children'][0] },
-      { text: 'MySQL', link: '/BackEnd/' + sidebar['/BackEnd/'][1]['children'][0] },
-      { text: 'Redis', link: '/BackEnd/' + sidebar['/BackEnd/'][2]['children'][0] },
-      { text: 'Nginx', link: '/BackEnd/' + sidebar['/BackEnd/'][3]['children'][0] },
-      { text: 'Http', link: '/BackEnd/' + sidebar['/BackEnd/'][4]['children'][0] },
-      { text: '操作系统', link: '/BackEnd/' + sidebar['/BackEnd/'][5]['children'][0] }
+      { text: 'Spring', link: '/BackEnd/' + sidebar['/BackEnd/'][1]['children'][0] },
+      { text: 'MySQL', link: '/BackEnd/' + sidebar['/BackEnd/'][2]['children'][0] },
+      { text: 'Redis', link: '/BackEnd/' + sidebar['/BackEnd/'][3]['children'][0] },
+      { text: 'Nginx', link: '/BackEnd/' + sidebar['/BackEnd/'][4]['children'][0] },
+      { text: 'Http', link: '/BackEnd/' + sidebar['/BackEnd/'][5]['children'][0] },
+      { text: '操作系统', link: '/BackEnd/' + sidebar['/BackEnd/'][6]['children'][0] }
     ]
   },
 
