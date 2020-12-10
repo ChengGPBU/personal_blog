@@ -42,6 +42,7 @@ const sidebar = {
       children: [
         'Android/android_fastlane',
         'Android/android_event',
+        'Android/android_lanuch_mode',
         'Android/'
       ]
     },
