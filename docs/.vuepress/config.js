@@ -122,7 +122,10 @@ const sidebar = {
     },
     {
       title: "个人",
-      children: ["private/2019_summary"]
+      children: [
+        // "private/2019_summary",
+        "private/uniapp_share",
+      ]
     }
   ]
 }
