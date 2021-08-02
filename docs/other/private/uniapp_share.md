@@ -53,7 +53,7 @@ meta:
 |  :----:  | :----: |  :----:  | :---: | :--: | :---: |
 |  开发语言  | js+css |  js+flex布局 | js+css | oc/swift/java/kt | js+css |
 |  跨平台  | 三端可用 |  iOS/Android/支持web需要工具转换 | 三端可用 | 自己平台 | 三端可用 |
-|  热更新  | 支持 |  支持  | 支持 | 支持 | 支持 | 
+|  热更新  | 支持 |  支持  | 支持 | 支持 | 支持 |
 |  渲染机制  | weex原生渲染 |  Yoga引擎渲染 | 移动端依赖于RN | --- | 浏览器DOM渲染 |
 |  异步  | callback |  callback  promise  | 同RN |  | |
 |  上手难度  | 容易 |  容易  | 容易  | 困难 | 容易 |
@@ -86,3 +86,10 @@ meta:
 ***打包流程(具体按照uniapp打包讲解演示)***
 <img src="./image/uniapp-package-process.png">
 
+
+
+
+
+
+***鸣谢***
+- 最后感谢leon pian在近期工作中提供的帮助和指导
