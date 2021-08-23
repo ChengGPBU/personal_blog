@@ -12,8 +12,7 @@ meta:
 # Uniapp开发总结与分享
 ***部门：技术开发中心--消费金融 姓名：程广***
 
-
-### 什么是 UNIAPP，介绍 UNIAPP 用途和技术基本原理
+## UNIAPP用途和技术基本原理
 
 - uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉/淘宝）、快应用等多个平台。
 
@@ -41,7 +40,7 @@ meta:
 <img src="./image/weex-to-native.png">
 
 
-### Weex与H5 Hybird比较
+### Weex与H5Hybird比较
 
 - ***以前***，实现一个需求，需要三种程序员(iOS，android，前端)写三份代码，这就带来了很大的开发成本，所以业界一直在探索跨平台技术方案。从之前的Hybrid，到现在的Weex，React Native，这些方案的根本目的都是一套代码，多端运行。
 - H5 Hybrid方案的本质是利用客户端APP的内置浏览器功能(即webview)，通过JSBridge实现客户端Native和前端JS的通信问题，然后开发H5页面内嵌于APP中，该方案提升了开发效率，也满足了跨端的需求，但是有一个问题就是，前端H5的性能和客户端的性能相差甚远。
@@ -58,15 +57,15 @@ meta:
 |  异步  | callback |  callback  promise  | 同RN |  | |
 |  上手难度  | 容易 |  容易  | 容易  | 困难 | 容易 |
 
-### 在多端同构中遇到的问题
 
 
-#### Taro
+## 在多端同构中遇到的问题
+### Taro
 - 移动端原理，将前端代码打包为RN的bundle，依赖于RN框架。
 - 前端开发用web的开发模式，如果在移动端想实现一些动画效果很困难，需要编写多套代码去适配，增加工作量。
 - 多端(微信支付宝  iOS/Android)开发中，在项目需求大，功能业务多样性的情况下，存在很多if条件判断
 - 工程中同时存在移动端业务 小程序业务，造成小程序端爆包（微信小程序为例：主包2M，整体工程包大小20M）
- #### Uniapp
+### Uniapp
 - 移动端原理，将前端代码打包为资源包，依赖于Weex框架
 - 对原生开发不够友好，调试麻烦，每次打包都需要云端打包（每天限制次数）很耗时，超过次数需要付费
 - 对原生的集成度很高，高度定制化，部分插件付费
@@ -76,9 +75,14 @@ meta:
   - Anroid权限问题，默认强制读取设备信息
 - 正在开发其他项目，突然测试同事需要打包
 
-#### Uniapp当前解决方案
+### Uniapp自定义
 - 自定义基座，自定义插件，通过插件的方式扩展调用原生功能
 - 自定义打包脚本方便开发调试，方便相互协同开发
+
+
+
+
+## 打包发布
 
 ### 本地打包流程
 [nodejs交互工具库](https://segmentfault.com/a/1190000037629594) <br/>
@@ -86,10 +90,36 @@ meta:
 ***打包流程(具体按照uniapp打包讲解演示)***
 <img src="./image/uniapp-package-process.png">
 
+### 应用更新流程
+<img src="./image/update-process.png">
+
+[uniapp应用资源加载路径](https://www.html5plus.org/doc/zh_cn/io.html) <br/>
+
+***注意***
+- iOS端真实加载资源目录和官方文档有出入
+<img src="./image/ipa-target.png">
+- Android端应用资源目录
+
+```java
+/data/data/%{package-name}%/files/apps%{app-id}%/www
+
+String basePath = Environment.getDataDirectory().getPath() + "/data/" + mContext.getPackageName() + "/files/apps/__UNI__D1CC641/";
+String wwwPath = basePath + "/www";
+```
+
+### 应用发布与推广
+- 通过各大应用平台发布推广
+- 自定义二维码发布推广
+
+<img src="./image/jxm-qrcode.png">
 
 
+
+
+### 就享买待完善问题
+- 运行错误日志收集上报
 
 
 
 ***鸣谢***
-- 最后感谢leon pian在近期工作中提供的帮助和指导
+- 最后感谢leon 和 pian在近期工作中提供的帮助和指导
