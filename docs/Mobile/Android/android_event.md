@@ -1,14 +1,14 @@
 ---
-title: Java Android-Thread—Event-Loop
+title: Event-Loop事件线程实现
 lang: zh
 meta:
   - name: description
-    content: Java Thread—Event-Loop
+    content: Event-Loop事件线程实现
   - name: keywords
-    content: Java Thread—Event-Loop
+    content: Event-Loop事件线程实现
 ---
 
-# 事件线程编码案例
+## 编码实现
 
 > 摘抄自socket.io 框架源码
 

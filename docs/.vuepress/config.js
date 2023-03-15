@@ -33,7 +33,19 @@ const sidebar = {
       children: [
         'React/react-router'
       ]
-    }
+    },
+    {
+      title: '小程序',
+      children: [
+        'MiniProgram/popup-management'
+      ]
+    },
+    {
+      title: '工程化',
+      children: [
+        'Engineering/git-commit-rules'
+      ]
+    },
   ],
 
   '/Mobile/': [
@@ -138,7 +150,9 @@ const nav = [
       { text: 'ES6', link: '/WEB/' + sidebar['/WEB/'][1]['children'][0] },
       { text: 'JavaScript', link: '/WEB/' + sidebar['/WEB/'][2]['children'][0] },
       { text: 'Vue', link: '/WEB/' + sidebar['/WEB/'][3]['children'][0] },
-      { text: 'React', link: '/WEB/' + sidebar['/WEB/'][4]['children'][0] }
+      { text: 'React', link: '/WEB/' + sidebar['/WEB/'][4]['children'][0] },
+      { text: '小程序', link: '/WEB/' + sidebar['/WEB/'][5]['children'][0] },
+      { text: '工程化', link: '/WEB/' + sidebar['/WEB/'][6]['children'][0] }
     ]
   },
   {
