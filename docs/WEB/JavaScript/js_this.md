@@ -1,5 +1,5 @@
 ---
-title: this、apply、call、bind
+title: js中的this指向
 lang: zh
 meta:
   - name: description

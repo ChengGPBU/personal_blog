@@ -17,7 +17,8 @@ const sidebar = {
     {
       title: 'JavaScript',
       children: [
-        'JavaScript/js_this'
+        'JavaScript/js_this',
+        'JavaScript/debounce_ throttle'
       ]
     },
 
