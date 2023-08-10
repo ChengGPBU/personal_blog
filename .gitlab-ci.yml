@@ -1,0 +1,15 @@
+image: node:14.21.3
+
+pages:
+ cache:
+   paths:
+   - node_modules/
+
+ script:
+ - yarn install 
+ - yarn build
+ artifacts:
+   paths:
+   - docs/.vuepress/dist
+ only:
+ - master
