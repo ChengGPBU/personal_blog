@@ -20,11 +20,13 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f https://${access_token}@github.com/ChengGPBU/ChengGPBU.github.io.git master
+# git push -f https://${access_token}@github.com/ChengGPBU/ChengGPBU.github.io.git master
 
 # 如果发布到 https://<USERNAME>.github.io
 # git push -f git@github.com:ChengGPBU/ChengGPBU.github.io.git master
-# git push -f https://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@github.com/ChengGPBU/ChengGPBU.github.io.git master
+
+# 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 访问token
+git push -f https://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@github.com/ChengGPBU/ChengGPBU.github.io.git master
 
 
 cd -
