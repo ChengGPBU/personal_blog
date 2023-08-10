@@ -24,5 +24,7 @@ git push -f https://${access_token}@github.com/ChengGPBU/ChengGPBU.github.io.git
 
 # 如果发布到 https://<USERNAME>.github.io
 # git push -f git@github.com:ChengGPBU/ChengGPBU.github.io.git master
+# git push -f https://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@github.com/ChengGPBU/ChengGPBU.github.io.git master
+
 
 cd -

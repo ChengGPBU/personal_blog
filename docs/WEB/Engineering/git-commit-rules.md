@@ -1,11 +1,11 @@
 ---
-title: 前端提交规范
+title: 前端工作流-提交规范
 lang: zh
 meta:
   - name: description
-    content: 前端提交规范
+    content: 前端工作流-提交规范
   - name: keywords
-    content: 前端提交规范
+    content: 前端工作流-提交规范
 ---
 
 # 使用 husky、commitlint 和 lint-staged 来构建你的前端工作流
