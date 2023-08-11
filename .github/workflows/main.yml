@@ -45,7 +45,7 @@ jobs:
       uses: actions/checkout@main
 
     - name: Build and Deploy
-      uses: jenkey2011/vuepress-deploy@v2.0.0
+      uses: jenkey2011/vuepress-deploy@master
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         TARGET_REPO: ChengGPBU/ChengGPBU.github.io
