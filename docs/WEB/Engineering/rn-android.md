@@ -26,9 +26,12 @@ meta:
 ## Android自定义bundle加载
 
 #### android 端启动流程分析
+源码分析主要分析两个方面：
+1. rn的配置信息是如何完成初始化配置的
+2. UI展示是通过什么方式展示的
 [RN启动流程](https://github.com/sucese/react-native/blob/master/doc/ReactNative%E6%BA%90%E7%A0%81%E7%AF%87/3ReactNative%E6%BA%90%E7%A0%81%E7%AF%87%EF%BC%9A%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B.md)
 
-标准的RN工程，是用过在MainApplication 初始化 ReactNativeHost来完成的，他最主要的功能就是创建ReactInstanceManager
+在标准的RN工程，是通过在MainApplication初始化ReactNativeHost来完成的，他最主要的功能就是创建ReactInstanceManager
 
 > - ReactInstanceManager是RN框架中的一个关键类，它用于管理和维护RN的实例。ReactInstanceManager 负责创建和管理RN的JavaScript引擎实例，配置信息，以及协调RN应用的生命周期和状态
 > - ReactRootView 实际上是一个FrameLayout 负责创建视图并开启RN应用startReactApplication
