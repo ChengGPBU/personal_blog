@@ -25,8 +25,8 @@ git commit -m 'deploy'
 # 如果发布到 https://<USERNAME>.github.io
 # git push -f git@github.com:ChengGPBU/ChengGPBU.github.io.git master
 
-# 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 访问token
-git push -f https://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@github.com/ChengGPBU/ChengGPBU.github.io.git master
+# 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 访问token
+git push -f https://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@github.com/ChengGPBU/ChengGPBU.github.io.git master
 
 
 cd -
