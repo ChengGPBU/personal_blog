@@ -38,7 +38,8 @@ const sidebar = {
     {
       title: '小程序',
       children: [
-        'MiniProgram/popup-management'
+        'MiniProgram/subpackage-optimize',
+        'MiniProgram/popup-management',
       ]
     },
     {
