@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RN fastlane自动化构建打包 | 程广的博客</title>
+    <meta name="description" content="RN fastlane自动化构建打包">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="keywords" content="RN fastlane自动化构建打包">
+    <link rel="preload" href="/assets/css/0.styles.9cddba79.css" as="style"><link rel="preload" href="/assets/js/app.89670727.js" as="script"><link rel="preload" href="/assets/js/7.7583b7ef.js" as="script"><link rel="prefetch" href="/assets/js/10.ace91f2a.js"><link rel="prefetch" href="/assets/js/11.3b608195.js"><link rel="prefetch" href="/assets/js/12.413b91a8.js"><link rel="prefetch" href="/assets/js/13.ab48ff00.js"><link rel="prefetch" href="/assets/js/14.25dcc4fa.js"><link rel="prefetch" href="/assets/js/15.6b5e7778.js"><link rel="prefetch" href="/assets/js/16.40eb4736.js"><link rel="prefetch" href="/assets/js/17.3e641b84.js"><link rel="prefetch" href="/assets/js/18.555933ed.js"><link rel="prefetch" href="/assets/js/19.4f838e67.js"><link rel="prefetch" href="/assets/js/2.5c5a7514.js"><link rel="prefetch" href="/assets/js/20.d7d9da56.js"><link rel="prefetch" href="/assets/js/21.d2f45f75.js"><link rel="prefetch" href="/assets/js/22.b6c45f53.js"><link rel="prefetch" href="/assets/js/23.ee6b5351.js"><link rel="prefetch" href="/assets/js/24.e1720f79.js"><link rel="prefetch" href="/assets/js/25.2f277c51.js"><link rel="prefetch" href="/assets/js/26.32910ba8.js"><link rel="prefetch" href="/assets/js/27.042118a8.js"><link rel="prefetch" href="/assets/js/28.4683130c.js"><link rel="prefetch" href="/assets/js/29.2c58d8df.js"><link rel="prefetch" href="/assets/js/3.2d73d0ea.js"><link rel="prefetch" href="/assets/js/30.3c5cf4a6.js"><link rel="prefetch" href="/assets/js/31.94a6c38e.js"><link rel="prefetch" href="/assets/js/32.9d42e194.js"><link rel="prefetch" href="/assets/js/33.5f3f3886.js"><link rel="prefetch" href="/assets/js/34.0e7d4b29.js"><link rel="prefetch" href="/assets/js/35.edc828d1.js"><link rel="prefetch" href="/assets/js/36.7e8b9416.js"><link rel="prefetch" href="/assets/js/37.00be8fac.js"><link rel="prefetch" href="/assets/js/38.27cd320c.js"><link rel="prefetch" href="/assets/js/39.4cfadd7b.js"><link rel="prefetch" href="/assets/js/4.4406d8e4.js"><link rel="prefetch" href="/assets/js/40.ecfa9391.js"><link rel="prefetch" href="/assets/js/41.6452664b.js"><link rel="prefetch" href="/assets/js/42.492145a9.js"><link rel="prefetch" href="/assets/js/43.d0618976.js"><link rel="prefetch" href="/assets/js/44.61201bbf.js"><link rel="prefetch" href="/assets/js/45.d37de7d7.js"><link rel="prefetch" href="/assets/js/46.749bc106.js"><link rel="prefetch" href="/assets/js/47.4cca52b2.js"><link rel="prefetch" href="/assets/js/48.f982cd71.js"><link rel="prefetch" href="/assets/js/49.2e47e7ea.js"><link rel="prefetch" href="/assets/js/5.517b540a.js"><link rel="prefetch" href="/assets/js/50.f127c615.js"><link rel="prefetch" href="/assets/js/51.480178a3.js"><link rel="prefetch" href="/assets/js/52.8ad44059.js"><link rel="prefetch" href="/assets/js/53.362222ec.js"><link rel="prefetch" href="/assets/js/54.01f53e45.js"><link rel="prefetch" href="/assets/js/55.927ad5de.js"><link rel="prefetch" href="/assets/js/56.b159b3a5.js"><link rel="prefetch" href="/assets/js/57.b52b9cf2.js"><link rel="prefetch" href="/assets/js/6.206400df.js"><link rel="prefetch" href="/assets/js/8.3952b964.js"><link rel="prefetch" href="/assets/js/9.e567a3f2.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9cddba79.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">程广的博客</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">前端栈</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/WEB/Node/nvm-nrm-npm.html" class="nav-link">NodeJS</a></li><li class="dropdown-item"><!----> <a href="/WEB/ES6/array.html" class="nav-link">ES6</a></li><li class="dropdown-item"><!----> <a href="/WEB/JavaScript/js_this.html" class="nav-link">JavaScript</a></li><li class="dropdown-item"><!----> <a href="/WEB/Vue/vuepress-blog.html" class="nav-link">Vue</a></li><li class="dropdown-item"><!----> <a href="/WEB/React/react-router.html" class="nav-link">React</a></li><li class="dropdown-item"><!----> <a href="/WEB/MiniProgram/subpackage-optimize.html" class="nav-link">小程序</a></li><li class="dropdown-item"><!----> <a href="/WEB/Engineering/git-commit-rules.html" class="nav-link">工程化</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">移动端</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Mobile/Android/android_fastlane.html" class="nav-link">Android</a></li><li class="dropdown-item"><!----> <a href="/Mobile/ReactNative/rn_fastlane.html" class="nav-link router-link-exact-active router-link-active">ReactNative</a></li><li class="dropdown-item"><!----> <a href="/Mobile/IOS/urls.html" class="nav-link">IOS</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">后端栈</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BackEnd/Java/" class="nav-link">Java基础</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/Spring/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/MySQL/mysql5.7_install.html" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/Redis/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/Nginx/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/Http/" class="nav-link">Http</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/OS/" class="nav-link">操作系统</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/Git/git.html" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/other/private/uniapp_share.html" class="nav-link">个人</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">前端栈</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/WEB/Node/nvm-nrm-npm.html" class="nav-link">NodeJS</a></li><li class="dropdown-item"><!----> <a href="/WEB/ES6/array.html" class="nav-link">ES6</a></li><li class="dropdown-item"><!----> <a href="/WEB/JavaScript/js_this.html" class="nav-link">JavaScript</a></li><li class="dropdown-item"><!----> <a href="/WEB/Vue/vuepress-blog.html" class="nav-link">Vue</a></li><li class="dropdown-item"><!----> <a href="/WEB/React/react-router.html" class="nav-link">React</a></li><li class="dropdown-item"><!----> <a href="/WEB/MiniProgram/subpackage-optimize.html" class="nav-link">小程序</a></li><li class="dropdown-item"><!----> <a href="/WEB/Engineering/git-commit-rules.html" class="nav-link">工程化</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">移动端</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Mobile/Android/android_fastlane.html" class="nav-link">Android</a></li><li class="dropdown-item"><!----> <a href="/Mobile/ReactNative/rn_fastlane.html" class="nav-link router-link-exact-active router-link-active">ReactNative</a></li><li class="dropdown-item"><!----> <a href="/Mobile/IOS/urls.html" class="nav-link">IOS</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">后端栈</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BackEnd/Java/" class="nav-link">Java基础</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/Spring/" class="nav-link">Spring</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/MySQL/mysql5.7_install.html" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/Redis/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/Nginx/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/Http/" class="nav-link">Http</a></li><li class="dropdown-item"><!----> <a href="/BackEnd/OS/" class="nav-link">操作系统</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/Git/git.html" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/other/private/uniapp_share.html" class="nav-link">个人</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>Android</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>ReactNative</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/Mobile/ReactNative/rn_fastlane.html" class="active sidebar-link">RN fastlane自动化构建打包</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Mobile/ReactNative/rn_fastlane.html#项目目录结构" class="sidebar-link">项目目录结构</a></li><li class="sidebar-sub-header"><a href="/Mobile/ReactNative/rn_fastlane.html#fastfile-lane任务说明" class="sidebar-link">Fastfile lane任务说明</a></li><li class="sidebar-sub-header"><a href="/Mobile/ReactNative/rn_fastlane.html#环境变量设置（-env-env-dev-env-prod）" class="sidebar-link">环境变量设置（.env .env.dev .env.prod）</a></li><li class="sidebar-sub-header"><a href="/Mobile/ReactNative/rn_fastlane.html#init-platform-info-rb-初始fastlane全局变量" class="sidebar-link">initplatforminfo.rb 初始fastlane全局变量</a></li><li class="sidebar-sub-header"><a href="/Mobile/ReactNative/rn_fastlane.html#bundle-assets-rb-bundle文件打包" class="sidebar-link">bundle_assets.rb bundle文件打包</a></li><li class="sidebar-sub-header"><a href="/Mobile/ReactNative/rn_fastlane.html#code-push-rb-codepush推送" class="sidebar-link">code_push.rb codePush推送</a></li><li class="sidebar-sub-header"><a href="/Mobile/ReactNative/rn_fastlane.html#upload-to-fir-rb-apk推送到fir-im" class="sidebar-link">uploadtofir.rb apk推送到fir.im</a></li><li class="sidebar-sub-header"><a href="/Mobile/ReactNative/rn_fastlane.html#android端-version-properties配置" class="sidebar-link">Android端 version.properties配置</a></li><li class="sidebar-sub-header"><a href="/Mobile/ReactNative/rn_fastlane.html#android-打包说明" class="sidebar-link">Android 打包说明</a></li><li class="sidebar-sub-header"><a href="/Mobile/ReactNative/rn_fastlane.html#rn打包说明" class="sidebar-link">RN打包说明</a></li></ul></li><li><a href="/Mobile/ReactNative/" class="sidebar-link">ReactNative</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>IOS杂谈</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="rn-fastlane自动化构建打包"><a href="#rn-fastlane自动化构建打包" class="header-anchor">#</a> RN fastlane自动化构建打包</h1> <blockquote><p>Fastlane is the easiest way to automate beta deployments and releases for your iOS and Android apps.</p></blockquote> <ul><li><strong>fastlane 具体教程及文档请点击进入 <a href="https://docs.fastlane.tools/" target="_blank" rel="noopener noreferrer">fastlane 使用文档<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></strong></li> <li><strong>fastlane 自定义actions开发流程 <a href="https://www.jianshu.com/p/44bbe1a31b52" target="_blank" rel="noopener noreferrer">fastlane 自定义action<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></strong></li></ul> <h2 id="项目目录结构"><a href="#项目目录结构" class="header-anchor">#</a> 项目目录结构</h2> <img src="/assets/img/991578922129_.pic_hd.a25ba0a8.jpg"> <h2 id="fastfile-lane任务说明"><a href="#fastfile-lane任务说明" class="header-anchor">#</a> Fastfile lane任务说明</h2> <div class="language-js line-numbers-mode"><pre class="language-js"><code>fastlane_require <span class="token string">'dotenv'</span>
+# 加载<span class="token punctuation">.</span>env 项目环境配置
+Dotenv<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token string">&quot;../.env&quot;</span><span class="token punctuation">)</span>
+
+platform <span class="token operator">:</span>android <span class="token keyword">do</span>
+  # 初始化变量
+  gradle_path <span class="token operator">=</span> <span class="token string">&quot;./gradlew&quot;</span>
+  project_dir <span class="token operator">=</span> <span class="token string">&quot;./android&quot;</span>
+  apk_directory <span class="token operator">=</span> <span class="token string">&quot;/app/build/outputs/apk/release/app-release.apk&quot;</span>
+
+  # 脚本执行前的准备
+  desc <span class="token string">&quot;inject env variables&quot;</span>
+    before_all <span class="token keyword">do</span> <span class="token operator">|</span>lane<span class="token punctuation">,</span> options<span class="token operator">|</span>
+      platform <span class="token operator">=</span> <span class="token string">&quot;android&quot;</span>
+      lane_context<span class="token punctuation">[</span>SharedValues<span class="token operator">:</span><span class="token operator">:</span><span class="token constant">PLATFORM_NAME</span><span class="token punctuation">]</span> <span class="token operator">=</span> platform
+      # 初始化 fastlane 全局变量 下边介绍
+      <span class="token function">init_platform_info</span><span class="token punctuation">(</span>platform<span class="token operator">:</span> platform<span class="token punctuation">)</span>
+      env <span class="token operator">=</span> options<span class="token punctuation">[</span><span class="token operator">:</span>env<span class="token punctuation">]</span> <span class="token operator">?</span> options<span class="token punctuation">[</span><span class="token operator">:</span>env<span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token string">&quot;dev&quot;</span>
+      Dotenv<span class="token punctuation">.</span><span class="token function">overload</span><span class="token punctuation">(</span><span class="token string">&quot;../.env.#{env}&quot;</span><span class="token punctuation">)</span>
+  end
+
+  # 安装一个release apk
+  desc <span class="token string">&quot;install release apk&quot;</span>
+  lane <span class="token operator">:</span>install <span class="token keyword">do</span>
+    sh <span class="token string">&quot;adb install ../android#{apk_directory}&quot;</span>
+  end
+
+  # 构建一个release apk
+  desc <span class="token string">&quot;build a release apk&quot;</span>
+  lane <span class="token operator">:</span>build_apk <span class="token keyword">do</span> <span class="token operator">|</span>options<span class="token operator">|</span>
+    # react<span class="token operator">-</span>native<span class="token operator">-</span>config
+    shellcommand <span class="token operator">=</span> <span class="token string">&quot;export ENVFILE=.env.#{ENV[&quot;</span><span class="token constant">APP_ENV</span><span class="token string">&quot;]} &amp;&amp; cd ../android &amp;&amp; ./gradlew clean &amp;&amp; ./gradlew assembleRelease&quot;</span>
+    sh shellcommand
+  end
+
+  # 构建一个release 并发布到fir<span class="token punctuation">.</span>im
+  desc <span class="token string">&quot;distribute a beta version to fir&quot;</span>
+  lane <span class="token operator">:</span>beta <span class="token keyword">do</span>
+    <span class="token function">build_apk</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">upload_to_fir</span><span class="token punctuation">(</span>
+      path<span class="token operator">:</span> <span class="token string">&quot;./android#{apk_directory}&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+    # <span class="token function">install</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  end
+
+
+  desc <span class="token string">&quot;distribute an app to app store&quot;</span>
+  lane <span class="token operator">:</span>release <span class="token keyword">do</span> <span class="token operator">|</span>options<span class="token operator">|</span>
+    Dotenv<span class="token punctuation">.</span><span class="token function">overload</span><span class="token punctuation">(</span><span class="token string">&quot;../.env.prod&quot;</span><span class="token punctuation">)</span>
+    # 执行gradle脚本 更新版本号
+    bump_type <span class="token operator">=</span> options<span class="token punctuation">[</span><span class="token operator">:</span>bump_type<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token string">&quot;patch&quot;</span>
+    <span class="token function">gradle</span><span class="token punctuation">(</span>
+      task<span class="token operator">:</span> <span class="token string">&quot;doVersionIncrement&quot;</span><span class="token punctuation">,</span>
+      flags<span class="token operator">:</span> <span class="token string">&quot;-q -Pbump_type=#{bump_type}&quot;</span><span class="token punctuation">,</span>
+      project_dir<span class="token operator">:</span> project_dir<span class="token punctuation">,</span>
+      gradle_path<span class="token operator">:</span> gradle_path<span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+    <span class="token function">gradle</span><span class="token punctuation">(</span>
+      task<span class="token operator">:</span> <span class="token string">&quot;doVersionCodeIncrement&quot;</span><span class="token punctuation">,</span>
+      flags<span class="token operator">:</span> <span class="token string">&quot;-q&quot;</span><span class="token punctuation">,</span>
+      project_dir<span class="token operator">:</span> project_dir<span class="token punctuation">,</span>
+      gradle_path<span class="token operator">:</span> gradle_path<span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+    <span class="token function">build_apk</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  end
+
+  lane <span class="token operator">:</span>install_release <span class="token keyword">do</span> <span class="token operator">|</span>options<span class="token operator">|</span>
+    Dotenv<span class="token punctuation">.</span><span class="token function">overload</span><span class="token punctuation">(</span><span class="token string">&quot;../.env.prod&quot;</span><span class="token punctuation">)</span>
+    <span class="token function">build_apk</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">install</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  end
+
+
+  # 打包bundle文件 并推送到copepush
+  desc <span class="token string">&quot;codePush assets&quot;</span>
+  lane <span class="token operator">:</span>codePush <span class="token keyword">do</span> <span class="token operator">|</span>options<span class="token operator">|</span>
+    <span class="token function">bundle_assets</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    log <span class="token operator">=</span> options<span class="token punctuation">[</span><span class="token operator">:</span>log<span class="token punctuation">]</span> <span class="token operator">?</span> options<span class="token punctuation">[</span><span class="token operator">:</span>log<span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token function">push_code</span><span class="token punctuation">(</span>log<span class="token operator">:</span> log<span class="token punctuation">)</span>
+    <span class="token function">upload_sourcemap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  end
+
+end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br></div></div><h2 id="环境变量设置（-env-env-dev-env-prod）"><a href="#环境变量设置（-env-env-dev-env-prod）" class="header-anchor">#</a> 环境变量设置（.env .env.dev .env.prod）</h2> <div class="language-js line-numbers-mode"><pre class="language-js"><code>BaseUrl<span class="token operator">=</span>xxx
+<span class="token constant">MIN_VERSION</span><span class="token operator">=</span><span class="token number">1.0</span><span class="token number">.0</span>
+<span class="token constant">CODE_PUSH</span><span class="token operator">=</span>Staging
+<span class="token constant">APP_ENV</span><span class="token operator">=</span>dev
+<span class="token constant">SENTRY_AUTH_TOKEN</span><span class="token operator">=</span>xxxx
+<span class="token constant">SENTRY_ORG</span><span class="token operator">=</span>heytea
+<span class="token constant">SENTRY_PROJECT</span><span class="token operator">=</span>xxxx
+<span class="token constant">FIR_TOKEN</span><span class="token operator">=</span>xxxx
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h2 id="init-platform-info-rb-初始fastlane全局变量"><a href="#init-platform-info-rb-初始fastlane全局变量" class="header-anchor">#</a> init_platform_info.rb 初始fastlane全局变量</h2> <div class="language-ruby line-numbers-mode"><pre class="language-ruby"><code><span class="token keyword">module</span> <span class="token constant">Fastlane</span>
+  <span class="token keyword">module</span> <span class="token constant">Actions</span>
+    <span class="token keyword">module</span> <span class="token constant">SharedValues</span>
+      <span class="token constant">APP_VERSION</span> <span class="token operator">=</span> <span class="token symbol">:APP_VERSION</span>
+      <span class="token constant">BUILD_NUMBER</span> <span class="token operator">=</span> <span class="token symbol">:BUILD_NUMBER</span>
+      <span class="token constant">RELEASE_TAG</span> <span class="token operator">=</span> <span class="token symbol">:RELEASE_TAG</span>
+      <span class="token constant">BUNDLE_FILE_NAME</span> <span class="token operator">=</span> <span class="token symbol">:BUNDLE_FILE_NAME</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">InitPlatformInfoAction</span> <span class="token operator">&lt;</span> <span class="token constant">Action</span>
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">run</span></span><span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+        platform <span class="token operator">=</span> params<span class="token punctuation">[</span><span class="token symbol">:platform</span><span class="token punctuation">]</span>
+        puts<span class="token punctuation">(</span><span class="token string">&quot;InitPlatformInfoAction Action....... <span class="token interpolation"><span class="token delimiter tag">#{</span>params<span class="token punctuation">[</span><span class="token symbol">:platform</span><span class="token punctuation">]</span><span class="token delimiter tag">}</span></span>&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> platform <span class="token operator">==</span> <span class="token string">&quot;ios&quot;</span>
+          iosPath <span class="token operator">=</span> <span class="token string">&quot;../ios/investor/Info.plist&quot;</span>
+          <span class="token constant">Actions</span><span class="token punctuation">.</span>lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">APP_VERSION</span><span class="token punctuation">]</span> <span class="token operator">=</span> other_action<span class="token punctuation">.</span>get_info_plist_value<span class="token punctuation">(</span>path<span class="token punctuation">:</span> iosPath<span class="token punctuation">,</span> key<span class="token punctuation">:</span> <span class="token string">&quot;CFBundleShortVersionString&quot;</span><span class="token punctuation">)</span>
+
+          <span class="token constant">Actions</span><span class="token punctuation">.</span>lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">BUILD_NUMBER</span><span class="token punctuation">]</span> <span class="token operator">=</span> other_action<span class="token punctuation">.</span>get_info_plist_value<span class="token punctuation">(</span>path<span class="token punctuation">:</span> iosPath<span class="token punctuation">,</span> key<span class="token punctuation">:</span> <span class="token string">&quot;CFBundleVersion&quot;</span><span class="token punctuation">)</span>
+
+          <span class="token constant">Actions</span><span class="token punctuation">.</span>lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">BUNDLE_FILE_NAME</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;main.jsbundle&quot;</span>
+        <span class="token keyword">elsif</span> platform <span class="token operator">==</span> <span class="token string">&quot;android&quot;</span>
+          <span class="token comment"># 获取android版本</span>
+          androidPath <span class="token operator">=</span> <span class="token string">&quot;../android/version.properties&quot;</span>
+          major <span class="token operator">=</span> other_action<span class="token punctuation">.</span>gradle_properties<span class="token punctuation">(</span>path<span class="token punctuation">:</span> androidPath<span class="token punctuation">,</span> property_name<span class="token punctuation">:</span> <span class="token string">&quot;major&quot;</span><span class="token punctuation">)</span>
+          minor <span class="token operator">=</span> other_action<span class="token punctuation">.</span>gradle_properties<span class="token punctuation">(</span>path<span class="token punctuation">:</span> androidPath<span class="token punctuation">,</span> property_name<span class="token punctuation">:</span> <span class="token string">&quot;minor&quot;</span><span class="token punctuation">)</span>
+          patch <span class="token operator">=</span> other_action<span class="token punctuation">.</span>gradle_properties<span class="token punctuation">(</span>path<span class="token punctuation">:</span> androidPath<span class="token punctuation">,</span> property_name<span class="token punctuation">:</span> <span class="token string">&quot;patch&quot;</span><span class="token punctuation">)</span>
+          <span class="token constant">Actions</span><span class="token punctuation">.</span>lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">APP_VERSION</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token delimiter tag">#{</span>major<span class="token delimiter tag">}</span></span>.<span class="token interpolation"><span class="token delimiter tag">#{</span>minor<span class="token delimiter tag">}</span></span>.<span class="token interpolation"><span class="token delimiter tag">#{</span>patch<span class="token delimiter tag">}</span></span>&quot;</span>
+          <span class="token constant">Actions</span><span class="token punctuation">.</span>lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">BUILD_NUMBER</span><span class="token punctuation">]</span> <span class="token operator">=</span> other_action<span class="token punctuation">.</span>gradle_properties<span class="token punctuation">(</span>path<span class="token punctuation">:</span> androidPath<span class="token punctuation">,</span> property_name<span class="token punctuation">:</span> <span class="token string">&quot;buildNumber&quot;</span><span class="token punctuation">)</span>
+
+          <span class="token constant">Actions</span><span class="token punctuation">.</span>lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">BUNDLE_FILE_NAME</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;index.android.bundle&quot;</span>
+        <span class="token keyword">end</span>
+
+        bundleTime <span class="token operator">=</span> <span class="token builtin">Time</span><span class="token punctuation">.</span>now<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">&quot;%Y%m%d-%H:%M&quot;</span><span class="token punctuation">)</span>
+        commitHash <span class="token operator">=</span> other_action<span class="token punctuation">.</span>last_git_commit<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token symbol">:abbreviated_commit_hash</span><span class="token punctuation">]</span>
+        <span class="token constant">Actions</span><span class="token punctuation">.</span>lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">RELEASE_TAG</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token delimiter tag">#{</span>platform<span class="token delimiter tag">}</span></span>-<span class="token interpolation"><span class="token delimiter tag">#{</span>commitHash<span class="token delimiter tag">}</span></span>-<span class="token interpolation"><span class="token delimiter tag">#{</span>bundleTime<span class="token delimiter tag">}</span></span>&quot;</span>
+      <span class="token keyword">end</span>
+
+      <span class="token comment">#####################################################</span>
+      <span class="token comment"># @!group Documentation</span>
+      <span class="token comment">#####################################################</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">description</span></span>
+        <span class="token string">&quot;A short description with &lt;= 80 characters of what this action does&quot;</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">details</span></span>
+        <span class="token comment"># Optional:</span>
+        <span class="token comment"># this is your chance to provide a more detailed description of this action</span>
+        <span class="token string">&quot;You can use this action to do cool things...&quot;</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">available_options</span></span>
+        <span class="token comment"># Define all options your action supports.</span>
+
+        <span class="token comment"># Below a few examples</span>
+        <span class="token punctuation">[</span><span class="token constant">FastlaneCore</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ConfigItem</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>
+          key<span class="token punctuation">:</span> <span class="token symbol">:platform</span><span class="token punctuation">,</span>
+          env_name<span class="token punctuation">:</span> <span class="token string">&quot;EXECUTE_PLATFORM&quot;</span><span class="token punctuation">,</span>
+          description<span class="token punctuation">:</span> <span class="token string">&quot;current platform&quot;</span><span class="token punctuation">,</span>
+          is_string<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">output</span></span>
+        <span class="token comment"># Define the shared values you are going to provide</span>
+        <span class="token comment"># Example</span>
+        <span class="token punctuation">[</span>
+          <span class="token punctuation">[</span><span class="token string">&quot;INIT_PLATFORM_INFO_CUSTOM_VALUE&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;A description of what this value contains&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">return_value</span></span>
+        <span class="token comment"># If your method provides a return value, you can describe here what it does</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">authors</span></span>
+        <span class="token comment"># So no one will ever forget your contribution to fastlane :) You are awesome btw!</span>
+        <span class="token punctuation">[</span><span class="token string">&quot;Your GitHub/Twitter Name&quot;</span><span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">is_supported</span></span><span class="token operator">?</span><span class="token punctuation">(</span>platform<span class="token punctuation">)</span>
+        <span class="token comment"># you can do things like</span>
+        <span class="token comment">#</span>
+        <span class="token comment">#  true</span>
+        <span class="token comment">#</span>
+        <span class="token comment">#  platform == :ios</span>
+        <span class="token comment">#</span>
+        <span class="token punctuation">[</span><span class="token symbol">:ios</span><span class="token punctuation">,</span> <span class="token symbol">:android</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">include</span><span class="token operator">?</span><span class="token punctuation">(</span>platform<span class="token punctuation">)</span>
+        <span class="token comment">#</span>
+
+        <span class="token comment"># platform == :ios</span>
+      <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br></div></div><blockquote><p>获取工程基本配置 APP_VERSION版本号 （<em><strong>android version.properties配置稍后介绍</strong></em>） BUILD_NUMBER 构建number、 RELEASE_TAG 构建标识、 BUNDLE_FILE_NAME bundle文件名</p></blockquote> <h2 id="bundle-assets-rb-bundle文件打包"><a href="#bundle-assets-rb-bundle文件打包" class="header-anchor">#</a> bundle_assets.rb bundle文件打包</h2> <div class="language-ruby line-numbers-mode"><pre class="language-ruby"><code><span class="token keyword">module</span> <span class="token constant">Fastlane</span>
+  <span class="token keyword">module</span> <span class="token constant">Actions</span>
+    <span class="token keyword">module</span> <span class="token constant">SharedValues</span>
+      <span class="token constant">RELEASE_TAG</span> <span class="token operator">=</span> <span class="token symbol">:RELEASE_TAG</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">BundleAssetsAction</span> <span class="token operator">&lt;</span> <span class="token constant">Action</span>
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">run</span></span><span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+        platform <span class="token operator">=</span> lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">PLATFORM_NAME</span><span class="token punctuation">]</span>
+        bundleName <span class="token operator">=</span> <span class="token constant">Actions</span><span class="token punctuation">.</span>lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">BUNDLE_FILE_NAME</span><span class="token punctuation">]</span>
+        bundleDir <span class="token operator">=</span> <span class="token string">&quot;./bundle/<span class="token interpolation"><span class="token delimiter tag">#{</span>platform<span class="token delimiter tag">}</span></span>&quot;</span>
+        sourceMapDir <span class="token operator">=</span> <span class="token string">&quot;./bundle/sourcemap&quot;</span>
+
+        <span class="token constant">FileUtils</span><span class="token punctuation">.</span>rm_rf<span class="token punctuation">(</span><span class="token builtin">Dir</span><span class="token punctuation">[</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter tag">#{</span>bundleDir<span class="token delimiter tag">}</span></span>/*&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;<span class="token interpolation"><span class="token delimiter tag">#{</span>sourceMapDir<span class="token delimiter tag">}</span></span>/*&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token constant">UI</span><span class="token punctuation">.</span>important<span class="token punctuation">(</span><span class="token string">&quot;clean bundle content success&quot;</span><span class="token punctuation">)</span>
+
+        releaseTag <span class="token operator">=</span> <span class="token constant">Actions</span><span class="token punctuation">.</span>lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">RELEASE_TAG</span><span class="token punctuation">]</span>
+
+        shellcommand <span class="token operator">=</span> <span class="token string">&quot;releaseTag='<span class="token interpolation"><span class="token delimiter tag">#{</span>releaseTag<span class="token delimiter tag">}</span></span>' react-native bundle --reset-cache --assets-dest <span class="token interpolation"><span class="token delimiter tag">#{</span>bundleDir<span class="token delimiter tag">}</span></span> --bundle-output <span class="token interpolation"><span class="token delimiter tag">#{</span>bundleDir<span class="token delimiter tag">}</span></span>/<span class="token interpolation"><span class="token delimiter tag">#{</span>bundleName<span class="token delimiter tag">}</span></span> --sourcemap-output <span class="token interpolation"><span class="token delimiter tag">#{</span>sourceMapDir<span class="token delimiter tag">}</span></span>/<span class="token interpolation"><span class="token delimiter tag">#{</span>bundleName<span class="token delimiter tag">}</span></span>.map --dev false --entry-file index.js --platform <span class="token interpolation"><span class="token delimiter tag">#{</span>platform<span class="token delimiter tag">}</span></span>&quot;</span>
+        sh shellcommand
+      <span class="token keyword">end</span>
+
+      <span class="token comment">#####################################################</span>
+      <span class="token comment"># @!group Documentation</span>
+      <span class="token comment">#####################################################</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">description</span></span>
+        <span class="token string">&quot;A short description with &lt;= 80 characters of what this action does&quot;</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">details</span></span>
+        <span class="token comment"># Optional:</span>
+        <span class="token comment"># this is your chance to provide a more detailed description of this action</span>
+        <span class="token string">&quot;You can use this action to do cool things...&quot;</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">available_options</span></span>
+        <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">output</span></span>
+        <span class="token comment"># Define the shared values you are going to provide</span>
+        <span class="token comment"># Example</span>
+        <span class="token punctuation">[</span>
+          <span class="token punctuation">[</span><span class="token string">&quot;BUNDLE_ASSETS_CUSTOM_VALUE&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;A description of what this value contains&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">return_value</span></span>
+        <span class="token comment"># If your method provides a return value, you can describe here what it does</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">authors</span></span>
+        <span class="token comment"># So no one will ever forget your contribution to fastlane :) You are awesome btw!</span>
+        <span class="token punctuation">[</span><span class="token string">&quot;Your GitHub/Twitter Name&quot;</span><span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">is_supported</span></span><span class="token operator">?</span><span class="token punctuation">(</span>platform<span class="token punctuation">)</span>
+        <span class="token comment"># you can do things like</span>
+        <span class="token comment">#</span>
+        <span class="token comment">#  true</span>
+        <span class="token comment">#</span>
+        <span class="token comment">#  platform == :ios</span>
+        <span class="token comment">#</span>
+        <span class="token punctuation">[</span><span class="token symbol">:ios</span><span class="token punctuation">,</span> <span class="token symbol">:android</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">include</span><span class="token operator">?</span><span class="token punctuation">(</span>platform<span class="token punctuation">)</span>
+        <span class="token comment">#</span>
+
+        <span class="token comment"># platform == :ios</span>
+      <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br></div></div><h2 id="code-push-rb-codepush推送"><a href="#code-push-rb-codepush推送" class="header-anchor">#</a> code_push.rb codePush推送</h2> <div class="language-ruby line-numbers-mode"><pre class="language-ruby"><code><span class="token keyword">module</span> <span class="token constant">Fastlane</span>
+  <span class="token keyword">module</span> <span class="token constant">Actions</span>
+    <span class="token keyword">module</span> <span class="token constant">SharedValues</span>
+      <span class="token constant">PUSH_CODE_CUSTOM_VALUE</span> <span class="token operator">=</span> <span class="token symbol">:PUSH_CODE_CUSTOM_VALUE</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">PushCodeAction</span> <span class="token operator">&lt;</span> <span class="token constant">Action</span>
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">run</span></span><span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+        platform <span class="token operator">=</span> lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">PLATFORM_NAME</span><span class="token punctuation">]</span>
+        puts<span class="token punctuation">(</span><span class="token string">&quot;push_code log Action....... <span class="token interpolation"><span class="token delimiter tag">#{</span>params<span class="token punctuation">[</span><span class="token symbol">:log</span><span class="token punctuation">]</span><span class="token delimiter tag">}</span></span>&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> platform <span class="token operator">==</span> <span class="token string">&quot;ios&quot;</span>
+          appName <span class="token operator">=</span> <span class="token string">&quot;ios 暂无&quot;</span>
+        <span class="token keyword">elsif</span> platform <span class="token operator">==</span> <span class="token string">&quot;android&quot;</span>
+          appName <span class="token operator">=</span> <span class="token string">&quot;ScreenMenu_Android&quot;</span>
+          codepushLog <span class="token operator">=</span> params<span class="token punctuation">[</span><span class="token symbol">:log</span><span class="token punctuation">]</span>
+        <span class="token keyword">end</span>
+
+        appVersion <span class="token operator">=</span> <span class="token constant">Actions</span><span class="token punctuation">.</span>lane_context<span class="token punctuation">[</span><span class="token constant">SharedValues</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">APP_VERSION</span><span class="token punctuation">]</span>
+
+        version <span class="token operator">=</span> <span class="token constant">ENV</span><span class="token punctuation">[</span><span class="token string">&quot;MIN_VERSION&quot;</span><span class="token punctuation">]</span> <span class="token operator">==</span> appVersion <span class="token operator">?</span> appVersion <span class="token punctuation">:</span> <span class="token string">&quot;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token constant">ENV</span><span class="token punctuation">[</span><span class="token string">&quot;MIN_VERSION&quot;</span><span class="token punctuation">]</span><span class="token delimiter tag">}</span></span>-<span class="token interpolation"><span class="token delimiter tag">#{</span>appVersion<span class="token delimiter tag">}</span></span>&quot;</span>
+        bundleDir <span class="token operator">=</span> <span class="token string">&quot;./bundle/<span class="token interpolation"><span class="token delimiter tag">#{</span>platform<span class="token delimiter tag">}</span></span>&quot;</span>
+        shellcommand <span class="token operator">=</span> <span class="token string">&quot;code-push release-react <span class="token interpolation"><span class="token delimiter tag">#{</span>appName<span class="token delimiter tag">}</span></span> <span class="token interpolation"><span class="token delimiter tag">#{</span>platform<span class="token delimiter tag">}</span></span> -o <span class="token interpolation"><span class="token delimiter tag">#{</span>bundleDir<span class="token delimiter tag">}</span></span> -t '<span class="token interpolation"><span class="token delimiter tag">#{</span>version<span class="token delimiter tag">}</span></span>' -d <span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token constant">ENV</span><span class="token punctuation">[</span><span class="token string">&quot;CODE_PUSH&quot;</span><span class="token punctuation">]</span><span class="token delimiter tag">}</span></span> --des <span class="token interpolation"><span class="token delimiter tag">#{</span>codepushLog<span class="token delimiter tag">}</span></span>  --mandatory false&quot;</span>
+                               
+
+        <span class="token keyword">begin</span>
+          sh shellcommand
+        <span class="token keyword">rescue</span> <span class="token operator">=</span><span class="token operator">&gt;</span> ex
+          <span class="token constant">UI</span><span class="token punctuation">.</span>error<span class="token punctuation">(</span>ex<span class="token punctuation">)</span>
+        <span class="token keyword">end</span>
+      <span class="token keyword">end</span>
+
+      <span class="token comment">#####################################################</span>
+      <span class="token comment"># @!group Documentation</span>
+      <span class="token comment">#####################################################</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">description</span></span>
+        <span class="token string">&quot;A short description with &lt;= 80 characters of what this action does&quot;</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">details</span></span>
+        <span class="token comment"># Optional:</span>
+        <span class="token comment"># this is your chance to provide a more detailed description of this action</span>
+        <span class="token string">&quot;You can use this action to do cool things...&quot;</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">available_options</span></span>
+        <span class="token comment"># Define all options your action supports.</span>
+
+        <span class="token comment"># Below a few examples</span>
+        <span class="token punctuation">[</span><span class="token constant">FastlaneCore</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ConfigItem</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>
+          key<span class="token punctuation">:</span> <span class="token symbol">:log</span><span class="token punctuation">,</span>
+          description<span class="token punctuation">:</span> <span class="token string">&quot;code push log&quot;</span><span class="token punctuation">,</span>
+          default_value<span class="token punctuation">:</span><span class="token string">''</span><span class="token punctuation">,</span>
+          is_string<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">output</span></span>
+        <span class="token comment"># Define the shared values you are going to provide</span>
+        <span class="token comment"># Example</span>
+        <span class="token punctuation">[</span>
+          <span class="token punctuation">[</span><span class="token string">&quot;PUSH_CODE_CUSTOM_VALUE&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;A description of what this value contains&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">return_value</span></span>
+        <span class="token comment"># If your method provides a return value, you can describe here what it does</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">authors</span></span>
+        <span class="token comment"># So no one will ever forget your contribution to fastlane :) You are awesome btw!</span>
+        <span class="token punctuation">[</span><span class="token string">&quot;Your GitHub/Twitter Name&quot;</span><span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">is_supported</span></span><span class="token operator">?</span><span class="token punctuation">(</span>platform<span class="token punctuation">)</span>
+        <span class="token comment"># you can do things like</span>
+        <span class="token comment">#</span>
+        <span class="token comment">#  true</span>
+        <span class="token comment">#</span>
+        <span class="token comment">#  platform == :ios</span>
+        <span class="token comment">#</span>
+        <span class="token comment">#  [:ios, :mac].include?(platform)</span>
+        <span class="token comment">#</span>
+        <span class="token punctuation">[</span><span class="token symbol">:ios</span><span class="token punctuation">,</span> <span class="token symbol">:android</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">include</span><span class="token operator">?</span><span class="token punctuation">(</span>platform<span class="token punctuation">)</span>
+      <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br></div></div><h2 id="upload-to-fir-rb-apk推送到fir-im"><a href="#upload-to-fir-rb-apk推送到fir-im" class="header-anchor">#</a> upload_to_fir.rb apk推送到fir.im</h2> <div class="language-ruby line-numbers-mode"><pre class="language-ruby"><code><span class="token keyword">module</span> <span class="token constant">Fastlane</span>
+  <span class="token keyword">module</span> <span class="token constant">Actions</span>
+    <span class="token keyword">module</span> <span class="token constant">SharedValues</span>
+      <span class="token constant">UPLOAD_TO_FIR_CUSTOM_VALUE</span> <span class="token operator">=</span> <span class="token symbol">:UPLOAD_TO_FIR_CUSTOM_VALUE</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">UploadToFirAction</span> <span class="token operator">&lt;</span> <span class="token constant">Action</span>
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">run</span></span><span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+        path <span class="token operator">=</span> params<span class="token punctuation">[</span><span class="token symbol">:path</span><span class="token punctuation">]</span>
+        shellcommand <span class="token operator">=</span> <span class="token string">&quot;fir publish '<span class="token interpolation"><span class="token delimiter tag">#{</span>path<span class="token delimiter tag">}</span></span>' -T <span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token constant">ENV</span><span class="token punctuation">[</span><span class="token string">&quot;FIR_TOKEN&quot;</span><span class="token punctuation">]</span><span class="token delimiter tag">}</span></span> -c $1&quot;</span>
+        sh shellcommand
+      <span class="token keyword">end</span>
+
+      <span class="token comment">#####################################################</span>
+      <span class="token comment"># @!group Documentation</span>
+      <span class="token comment">#####################################################</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">description</span></span>
+        <span class="token string">&quot;A short description with &lt;= 80 characters of what this action does&quot;</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">details</span></span>
+        <span class="token comment"># Optional:</span>
+        <span class="token comment"># this is your chance to provide a more detailed description of this action</span>
+        <span class="token string">&quot;You can use this action to do cool things...&quot;</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">available_options</span></span>
+        <span class="token comment"># Define all options your action supports.</span>
+
+        <span class="token comment"># Below a few examples</span>
+        <span class="token punctuation">[</span>
+          <span class="token constant">FastlaneCore</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ConfigItem</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>key<span class="token punctuation">:</span> <span class="token symbol">:path</span><span class="token punctuation">,</span>
+                                       env_name<span class="token punctuation">:</span> <span class="token string">&quot;UPLOAD_TO_FIR&quot;</span><span class="token punctuation">,</span> <span class="token comment"># The name of the environment variable</span>
+                                       description<span class="token punctuation">:</span> <span class="token string">&quot;apk or ipa path&quot;</span> <span class="token comment"># a short description of this parameter</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">output</span></span>
+        <span class="token comment"># Define the shared values you are going to provide</span>
+        <span class="token comment"># Example</span>
+        <span class="token punctuation">[</span>
+          <span class="token punctuation">[</span><span class="token string">&quot;UPLOAD_TO_FIR_CUSTOM_VALUE&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;A description of what this value contains&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">return_value</span></span>
+        <span class="token comment"># If your method provides a return value, you can describe here what it does</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">authors</span></span>
+        <span class="token comment"># So no one will ever forget your contribution to fastlane :) You are awesome btw!</span>
+        <span class="token punctuation">[</span><span class="token string">&quot;Your GitHub/Twitter Name&quot;</span><span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">is_supported</span></span><span class="token operator">?</span><span class="token punctuation">(</span>platform<span class="token punctuation">)</span>
+        <span class="token comment"># you can do things like</span>
+        <span class="token comment">#</span>
+        <span class="token comment">#  true</span>
+        <span class="token comment">#</span>
+        <span class="token comment">#  platform == :ios</span>
+        <span class="token comment">#</span>
+        <span class="token punctuation">[</span><span class="token symbol">:ios</span><span class="token punctuation">,</span> <span class="token symbol">:android</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">include</span><span class="token operator">?</span><span class="token punctuation">(</span>platform<span class="token punctuation">)</span>
+        <span class="token comment">#</span>
+
+      <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br></div></div><h2 id="android端-version-properties配置"><a href="#android端-version-properties配置" class="header-anchor">#</a> Android端 version.properties配置</h2> <ul><li><strong>参考文档 <a href="https://medium.com/@marselx/android-project-setup-part-2-fastlane-integration-ecddd54c6311" target="_blank" rel="noopener noreferrer">android 自动更新version<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></strong><br> <img src="/assets/img/1001578923740_.pic.b1f14400.jpg"></li></ul> <h3 id="versioncontrol-gradle-脚本"><a href="#versioncontrol-gradle-脚本" class="header-anchor">#</a> versionControl.gradle 脚本</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 读取版本配置信息</span>
+def <span class="token function">readVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    def versionFile  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>project<span class="token punctuation">.</span>rootDir<span class="token punctuation">,</span> <span class="token string">'version.properties'</span><span class="token punctuation">)</span>
+    def version <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    def stream
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        stream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>versionFile<span class="token punctuation">)</span>
+        version<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>stream<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>FileNotFoundException ignore<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>stream <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> stream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> version
+<span class="token punctuation">}</span>
+
+def <span class="token function">getVersionName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    def version <span class="token operator">=</span> <span class="token function">readVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    def versionName <span class="token operator">=</span> <span class="token string">&quot;${version.major}.${version.minor}.${version.patch}&quot;</span>
+    <span class="token keyword">return</span> versionName
+<span class="token punctuation">}</span>
+
+def <span class="token function">incrementVersionName</span><span class="token punctuation">(</span>def type<span class="token operator">=</span><span class="token string">&quot;patch&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    println <span class="token string">&quot;incrementVersionName type ==&gt;&gt; ${type}&quot;</span>
+    def version <span class="token operator">=</span> <span class="token function">readVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    def major <span class="token operator">=</span> version<span class="token punctuation">.</span>major <span class="token keyword">as</span> int
+    def minor <span class="token operator">=</span> version<span class="token punctuation">.</span>minor <span class="token keyword">as</span> int
+    def patch <span class="token operator">=</span> version<span class="token punctuation">.</span>patch <span class="token keyword">as</span> int
+    <span class="token keyword">if</span><span class="token punctuation">(</span>type <span class="token operator">==</span> <span class="token string">'major'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        major<span class="token operator">++</span>
+        minor <span class="token operator">=</span> <span class="token number">0</span>
+        patch <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type <span class="token operator">==</span> <span class="token string">'minor'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        minor<span class="token operator">++</span>
+        patch <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type <span class="token operator">==</span> <span class="token string">'patch'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        patch <span class="token operator">++</span>
+    <span class="token punctuation">}</span>
+
+    version<span class="token punctuation">.</span>major <span class="token operator">=</span> major<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    version<span class="token punctuation">.</span>minor <span class="token operator">=</span> minor<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    version<span class="token punctuation">.</span>patch <span class="token operator">=</span> patch<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    version<span class="token punctuation">.</span>buildNumber <span class="token operator">=</span> version<span class="token punctuation">.</span>buildNumber
+
+    def versionFile  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>project<span class="token punctuation">.</span>rootDir<span class="token punctuation">,</span> <span class="token string">'version.properties'</span><span class="token punctuation">)</span>
+    def stream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span>versionFile<span class="token punctuation">)</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        version<span class="token punctuation">.</span><span class="token function">store</span><span class="token punctuation">(</span>stream<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        stream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    def versionName <span class="token operator">=</span> <span class="token string">&quot;${version.major}.${version.minor}.${version.patch}&quot;</span>
+    <span class="token keyword">return</span> versionName
+<span class="token punctuation">}</span>
+
+def <span class="token function">getVersionCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    def buildnum <span class="token operator">=</span> <span class="token number">200000</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        def getGit <span class="token operator">=</span> <span class="token string">'git rev-list --count HEAD'</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        def gitVersion <span class="token operator">=</span> getGit<span class="token punctuation">.</span>text<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toInteger</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        buildnum <span class="token operator">=</span> buildnum <span class="token operator">+</span> gitVersion
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> buildnum
+<span class="token punctuation">}</span>
+
+def <span class="token function">setVersionCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    def buildNumber <span class="token operator">=</span> <span class="token number">200000</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        def getGit <span class="token operator">=</span> <span class="token string">'git rev-list --count HEAD'</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        def gitVersion <span class="token operator">=</span> getGit<span class="token punctuation">.</span>text<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toInteger</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        buildNumber <span class="token operator">=</span> buildNumber <span class="token operator">+</span> gitVersion
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    version <span class="token operator">=</span> <span class="token function">readVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    version<span class="token punctuation">.</span>major <span class="token operator">=</span> version<span class="token punctuation">.</span>major
+    version<span class="token punctuation">.</span>minor <span class="token operator">=</span> version<span class="token punctuation">.</span>minor
+    version<span class="token punctuation">.</span>patch <span class="token operator">=</span> version<span class="token punctuation">.</span>patch
+    version<span class="token punctuation">.</span>buildNumber <span class="token operator">=</span> buildNumber<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    def versionFile  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>project<span class="token punctuation">.</span>rootDir<span class="token punctuation">,</span> <span class="token string">'version.properties'</span><span class="token punctuation">)</span>
+    def stream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span>versionFile<span class="token punctuation">)</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        version<span class="token punctuation">.</span><span class="token function">store</span><span class="token punctuation">(</span>stream<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        stream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> buildNumber
+<span class="token punctuation">}</span>
+
+task doVersionCodeIncrement <span class="token punctuation">{</span>
+    def versionCode <span class="token operator">=</span> <span class="token function">setVersionCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    println <span class="token string">&quot;versionCode ==&gt;&gt; ${versionCode}&quot;</span>
+<span class="token punctuation">}</span>
+
+task doVersionIncrement <span class="token punctuation">{</span>
+    def versionName <span class="token operator">=</span> <span class="token function">incrementVersionName</span><span class="token punctuation">(</span>project<span class="token punctuation">.</span><span class="token function">getProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;bump_type&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    println <span class="token string">&quot;versionName ==&gt;&gt; ${versionName}&quot;</span>
+<span class="token punctuation">}</span>
+
+ext <span class="token punctuation">{</span>
+    getVersionName <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token operator">&amp;</span>getVersionName
+    getVersionCode <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token operator">&amp;</span>getVersionCode
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br></div></div><h3 id="app-build-gradle-配置"><a href="#app-build-gradle-配置" class="header-anchor">#</a> app/build.gradle 配置</h3> <ul><li><strong>在文件头部添加 apply from: &quot;../versionControl.gradle&quot;</strong> <img src="/assets/img/1021578924230_.pic.9e2c69f0.jpg"></li> <li><strong>在android {}节点下添加</strong> <img src="/assets/img/1011578924136_.pic_hd.e97e3b6c.jpg"></li></ul> <h2 id="android-打包说明"><a href="#android-打包说明" class="header-anchor">#</a> Android 打包说明</h2> <ul><li>1.当执行 fastlane android release bump_type:&quot;patch&quot; 命令，Dotenv.overload(&quot;../.env.prod&quot;) 读取项目环境变量。</li> <li>2.触发fastlane gralde插件，并调用versionControl.gradle脚本中 doVersionIncrement doVersionCodeIncrement两个task 执行，对版本号进行自增。</li> <li>3.调用build_apk() 打包任务打包apk文件</li> <li>4.调用upload_to_fir 推送apk 到fir.im</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>desc <span class="token string">&quot;distribute an app to app store&quot;</span>
+  lane <span class="token operator">:</span>release <span class="token keyword">do</span> <span class="token operator">|</span>options<span class="token operator">|</span>
+    Dotenv<span class="token punctuation">.</span><span class="token function">overload</span><span class="token punctuation">(</span><span class="token string">&quot;../.env.prod&quot;</span><span class="token punctuation">)</span>
+    # 执行gradle脚本 更新版本号
+    bump_type <span class="token operator">=</span> options<span class="token punctuation">[</span><span class="token operator">:</span>bump_type<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token string">&quot;patch&quot;</span>
+    <span class="token function">gradle</span><span class="token punctuation">(</span>
+      task<span class="token operator">:</span> <span class="token string">&quot;doVersionIncrement&quot;</span><span class="token punctuation">,</span>
+      flags<span class="token operator">:</span> <span class="token string">&quot;-q -Pbump_type=#{bump_type}&quot;</span><span class="token punctuation">,</span>
+      project_dir<span class="token operator">:</span> project_dir<span class="token punctuation">,</span>
+      gradle_path<span class="token operator">:</span> gradle_path<span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+    <span class="token function">gradle</span><span class="token punctuation">(</span>
+      task<span class="token operator">:</span> <span class="token string">&quot;doVersionCodeIncrement&quot;</span><span class="token punctuation">,</span>
+      flags<span class="token operator">:</span> <span class="token string">&quot;-q&quot;</span><span class="token punctuation">,</span>
+      project_dir<span class="token operator">:</span> project_dir<span class="token punctuation">,</span>
+      gradle_path<span class="token operator">:</span> gradle_path<span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+    <span class="token function">build_apk</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">upload_to_fir</span><span class="token punctuation">(</span>
+      path<span class="token operator">:</span> <span class="token string">&quot;./android#{apk_directory}&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+  end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h2 id="rn打包说明"><a href="#rn打包说明" class="header-anchor">#</a> RN打包说明</h2> <ul><li><ol><li>当执行 fastlane android codePush log:&quot;打包日志&quot;，调用 bundle_assets.rb 对bundle进行打包</li></ol></li> <li><ol start="2"><li>读取log参数 调用push_code.rb 推送到codepush托管平台</li></ol></li> <li><ol start="3"><li>执行upload_sourcemap.rb 推送到sentry（sentry 错误日志平台）</li></ol></li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>desc <span class="token string">&quot;codePush assets&quot;</span>
+  lane <span class="token operator">:</span>codePush <span class="token keyword">do</span> <span class="token operator">|</span>options<span class="token operator">|</span>
+    <span class="token function">bundle_assets</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    log <span class="token operator">=</span> options<span class="token punctuation">[</span><span class="token operator">:</span>log<span class="token punctuation">]</span> <span class="token operator">?</span> options<span class="token punctuation">[</span><span class="token operator">:</span>log<span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token function">push_code</span><span class="token punctuation">(</span>log<span class="token operator">:</span> log<span class="token punctuation">)</span>
+    <span class="token function">upload_sourcemap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/Mobile/Android/" class="prev">
+          待续……
+        </a></span> <span class="next"><a href="/Mobile/ReactNative/" class="router-link-active">
+          ReactNative
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.89670727.js" defer></script><script src="/assets/js/7.7583b7ef.js" defer></script>
+  </body>
+</html>
