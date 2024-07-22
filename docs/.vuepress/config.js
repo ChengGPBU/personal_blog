@@ -46,7 +46,8 @@ const sidebar = {
       title: '工程化',
       children: [
         'Engineering/git-commit-rules',
-        'Engineering/rn-android'
+        'Engineering/rn-android',
+        'Engineering/shell-scp'
       ]
     },
   ],
