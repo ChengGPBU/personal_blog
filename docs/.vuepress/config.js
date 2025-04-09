@@ -47,7 +47,8 @@ const sidebar = {
       children: [
         'Engineering/git-commit-rules',
         'Engineering/rn-android',
-        'Engineering/shell-scp'
+        'Engineering/shell-scp',
+        'Engineering/jenkins-cicd'
       ]
     },
   ],
@@ -66,6 +67,7 @@ const sidebar = {
       title: 'ReactNative',
       children: [
         'ReactNative/rn_fastlane',
+        'ReactNative/rn_optimization',
         'ReactNative/',
       ]
     },
